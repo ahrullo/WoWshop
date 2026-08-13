@@ -1,10 +1,27 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CATEGORIES, getCategoryName } from "@/lib/categories";
 import { ProductCard } from "@/components/ProductCard";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  if (!CATEGORIES.some((c) => c.slug === category)) return {};
+  const name = getCategoryName(category);
+
+  return {
+    title: name,
+    description: `${name} в WoWshop — необычные и приятные мелочи с доставкой.`,
+    alternates: { canonical: `/catalog/${category}` },
+  };
 }
 
 export default async function CategoryPage({
