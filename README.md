@@ -3,6 +3,8 @@
 Интернет-магазин необычных товаров: светильники, игрушки, канцтовары, аниме-мерч, необычная техника
 и аксессуары для телефонов.
 
+🌐 Живой сайт: **https://wowshop.vercel.app**
+
 Стек: **Next.js 16 (App Router, TypeScript)** + **Prisma** + **PostgreSQL (Neon)** + **Tailwind CSS** +
 **Stripe Checkout**.
 
